@@ -1,0 +1,7 @@
+<Marcelo>
+    dsn dbi:Pg:host=127.0.0.1;dbname=your_dbname
+    user your_user
+    password your_password
+    pg_enable_utf8 1
+    quote_char \"
+</Marcelo>
