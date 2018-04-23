@@ -1,0 +1,27 @@
+<div class="container" id="post">
+    <h1>[% post.title %]</h1>
+
+    [% IF c.user_exists %]
+    <p>
+      [% IF c.user.id == post.user_id || c.check_user_roles('admin') %]<a href="[% c.uri_for_action('/' _ post_controller _ '/edit', [post.id]) %]">Editar</a>[% END %]
+      [% IF c.check_user_roles('admin') %]<a href="[% c.uri_for_action('/' _ post_controller _ '/delete', [post.id]) %]">Deletar</a>[% END %]
+    </p>
+    [% END %]
+
+    <p>Por [% post.user.name %]<br>
+      Data [% post.created %]</p>
+
+  <div id="body">
+    [% markdown(post.body) %]
+
+  </div>
+    [% IF c.user_exists %]<p><a href="[% c.uri_for_action('/' _ post_controller _ '/comment', [post.id]) %]">Comentar esta postagem</a></p>[% END %]
+
+  [% IF html_ul %]
+  <p><b>Comentários</b></p>
+  [% html_ul %]
+  [% ELSE %]
+  <p><b>Nenhum comentário por enquanto</b></p>
+  [% END %]
+
+</div>

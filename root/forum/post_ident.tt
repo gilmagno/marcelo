@@ -1,0 +1,7 @@
+<dl>
+  <dt>Título</dt><dd>[% post.title %]</dd>
+  <dt>Autor</dt><dd>[% post.user.name %]</dd>
+  <dt>Criado</dt><dd>[% post.created %]</dd>
+  <dt>Atualizado</dt><dd>[% post.updated %]</dd>
+  <dt>Corpo</dt><dd>[% markdown(post.body) %]</dd>
+</dl>

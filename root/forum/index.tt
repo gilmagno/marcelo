@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>[% post_section_title %]</h1>
+
+  [% IF c.check_user_roles('admin') || (post_section == 'idea' && c.user_exists) %]
+  <p><a href="[% c.uri_for_action('/' _ post_controller _ '/add') %]">Adicionar postagem</a></p>
+  [% END %]
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Título (qtd de postagens)</th>
+        <th>Atividade recente</th>
+        <th>Quem postou</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH post IN posts %]
+      <tr>
+        <td style="width: 50%"><a href="[% c.uri_for_action('/' _ post_controller _ '/details', [post.id]) %]">[% post.title %]</a> ([% post.get_column('thread_count') %])</td>
+        <td>[% post.thread_updated.strftime('%d/%m/%y %H:%M:%S') %]</td>
+        <td style="width: 30%">[% post.people.join(', ') %]</td>
+      </tr>
+      [% END %]
+    </tbody>
+  </table>
+</div>

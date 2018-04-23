@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>[% post_section_title %] - Edição</h1>
+
+  <p>Você está editando a postagem abaixo.</a>
+
+  [% INCLUDE forum/post_ident.tt %]
+
+  [% form %]
+</div>
