@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>[% poll.title %]</h1>
+
+  [% markdown(poll.body) %]
+  
+  <h2>Resultado atual</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Opção</th>
+        <th>Votos</th>
+        <th>Porcentagem</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH stat IN stats %]
+      <tr>
+        <td style="width: 40%">[% stat.option.name %]</td>
+        <td style="width: 30%">[% stat.votes %]</td>
+        <td style="width: 30%">[% stat.percentage %]</td>
+      </tr>
+      [% END %]
+    </tbody>
+  </table>
+
+  [% IF c.user_exists %]
+
+  <h2>Votar</h2>
+
+  <p>Se você ainda não tiver votado, nenhuma opção estará selecionada
+    no formuĺario abaixo. Se você já tiver votado, seu voto estará
+    selecionado entre as opções abaixo. Para mudar seu voto, selecione
+    outra opção e pressione o botão "Votar".</p>
+
+  [% form %]
+  
+  [% END %]
+</div>

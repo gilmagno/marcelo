@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Enquetes</h1>
+
+  [% IF c.check_user_roles('admin') %]
+  <p><a href="[% c.uri_for_action('polls/add') %]">Adicionar enquete</a></p>
+  [% END %]
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Quantidade de votos</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH poll IN polls %]
+      <tr>
+        <td><a href="[% c.uri_for_action('/polls/details', [poll.id]) %]">[% poll.title %]</a></td>
+        <td>[% poll.total_votes %]</td>
+      </tr>
+      [% END %]
+    </tbody>
+  </table>
+</div>
