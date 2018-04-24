@@ -147,7 +147,9 @@ sub edit :Private {
 
     my $form = HTML::FormFu->new( _formfu_config() );
     $form->stash->{schema} = $c->model('DB')->schema;
-    $form->remove_element($form->get_element({ name => 'title' }));
+    if (!$c->check_user_roles('admin')) {
+        $form->remove_element($form->get_element({ name => 'title' }));
+    }
     $form->process($c->req->params);
 
     if ($form->submitted_and_valid) {
